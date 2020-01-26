@@ -1,0 +1,72 @@
+import 'package:flutter/material.dart';
+import 'package:vote/main.dart';
+
+void main() => runApp(MaterialApp(
+  home: Home(),
+));
+
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  var bjp_count=0;
+  var congress_count=0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Who would you vote for?"),
+          centerTitle: true,
+          backgroundColor: Colors.pinkAccent,
+        ),
+      body: Column(
+       mainAxisAlignment: MainAxisAlignment.center,
+      children:<Widget>[
+        Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+        Text("BJP"),
+        RaisedButton(
+            onPressed:()=> setState(() {
+              bjp_count+=1;
+            }),
+            color: Colors.deepOrange,
+            child: Text("Vote")
+        )
+        ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Text("CONGRESS"),
+            RaisedButton(
+                onPressed:()=> setState((){
+                congress_count+=1;
+                }),
+                color: Colors.lightBlue,
+                child: Text("Vote")
+            )
+          ]
+         ),
+       Container(
+         padding: EdgeInsets.all(10.0),
+         margin: EdgeInsets.all(10.0),
+         color: Colors.amber,
+         child: Text("Number of votes for BJP:'$bjp_count'"),
+       ),
+        Container(
+          padding: EdgeInsets.all(10.0),
+          color: Colors.amber,
+          child: Text("Number of votes for Congress:'$congress_count'"),
+        ),
+      ],
+      ),
+      );
+  }
+}
+
+
+
